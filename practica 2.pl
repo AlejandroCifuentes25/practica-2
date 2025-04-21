@@ -23,8 +23,8 @@ vehiculos_por_marca(Marca, List) :-
     findall(Referencia, vehiculo(Marca, Referencia, _, _, _), List).
 
 % predicado para agrupar vehiculos por tipo y año para una marca
-vehiculos_por_tipo_y_año(Marca, Agrupado) :-
-    bagof((Tipo, Año, Referencia), vehiculo(Marca, Referencia, Tipo, _, Año), Agrupado).
+vehiculos_por_tipo_y_anio(Marca, Agrupado) :-
+    bagof((Tipo, Anio, Referencia), vehiculo(Marca, Referencia, Tipo, _, Anio), Agrupado).
 
 %  Suma los precios de una lista de vehiculos
 suma_precios([], 0).
@@ -36,8 +36,8 @@ suma_precios([(_, _, _, Precio, _) | T], Total) :-
 
 % generar_reportes(+Marca, +Tipo, +PresupuestoMax, -Resultado)
 generar_reportes(Marca, Tipo, PresupuestoMax, Resultado) :-
-    findall((Marca, Referencia, Tipo, Precio, Año),
-            (vehiculo(Marca, Referencia, Tipo, Precio, Año),
+    findall((Marca, Referencia, Tipo, Precio, Anio),
+            (vehiculo(Marca, Referencia, Tipo, Precio, Anio),
              Precio =< PresupuestoMax),
             Vehiculos),
     suma_precios(Vehiculos, TotalValor),
